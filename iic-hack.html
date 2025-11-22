@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Productivity and Focus Dashboard</title>
+    <style>
+      body{
+        font-family:Arial;
+
+      }
+      .input-css,
+      .duedate-css{
+       padding:10px;
+      }
+      .grid,
+      .columns{
+      display: grid;
+      grid-template-columns: 200px 150px 100px;
+      column-gap: 10px;
+      row-gap: 10px;
+      align-items: center;
+      }
+      .delete{
+      background-color: darkred;
+      color: white;
+      border: none;
+      padding:6px ;
+      cursor:pointer;
+      }
+      .add{
+        background-color: green;
+      color: white;
+      border: none;
+      font-size: 15px;
+      padding:10px;
+      cursor: pointer;
+      }
+    </style>
+  </head>
+    <body>
+      <button>To-do List </button>
+      <div class="columns">
+      <input class="input input-css" placeholder="To do">
+      <input class="duedate duedate-css" type="date" >
+      <button class="add" onclick="AddList()">Add</button>
+      </div>
+      
+    
+    <div class="js-todo"></div>
+    <script src="iic-hack.js"></script>
+    </body>
+</html>

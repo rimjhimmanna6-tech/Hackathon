@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pomodoro Timer</title>
+    <style>
+      body{
+        font-family:Arial, Helvetica, sans-serif;
+        background-color: black;
+      }
+      .divcss
+      .sbutton
+      .rbutton
+      {
+        border-radius: 50px;
+        margin: 10px;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+   <button class="sbutton" onclick="startTimer()">Start timer</button>
+   <button class="rbutton" onclick="resetTimer()">Reset timer</button>
+   <div class="time divcss"></div>
+    <script>
+let timeleft=25*60;
+let timer;
+let alarm=new Audio("audio/beep_alarm.mp3");
+function displaytimer()
+{
+  let minutes=Math.floor(timeleft/60);
+  let seconds= timeleft % 60;
+ document.querySelector('.time').innerHTML=`Time left: ${minutes} : ${seconds}`;
+}
+function starTimer()
+{
+if(timer)
+  return;
+timer=setInterval(()=>{
+  if(timeleft<=0)
+  {
+    clearInterval(timer);
+    timer=null;
+    alarm.play();
+    alert("TIME'S UP! GREAT JOB TIME TO TAKE BREAK");
+  }
+  else{
+    timeleft--;
+    displaytimer();
+}
+},1000
+);
+}
+function resetTimer()
+  {
+     clearInterval(timer);
+      timer=null;
+    timeleft=25*60;
+    displaytimer();
+  }
+
+
+    </script>
+  </body>
+</html>
