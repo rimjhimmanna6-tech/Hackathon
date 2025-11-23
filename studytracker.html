@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Study Tracker</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f8;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .table {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+     
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 150px repeat(5, 1fr);
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header {
+      font-weight: bold;
+      background: forestgreen;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      border-radius: 8px;
+    }
+
+    .cell {
+      background: lightsalmon;
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .time {
+      background: wheat;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="table">
+  <h1>Study Tracker</h1>
+
+  <div class="grid">
+
+    
+    <div class="header">Time</div>
+    <div class="header">Monday</div>
+    <div class="header">Tuesday</div>
+    <div class="header">Wednesday</div>
+    <div class="header">Thursday</div>
+    <div class="header">Friday</div>
+
+    <div class="cell time">9:00 - 10:00</div>
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+
+    <div class="cell time">10:00 - 11:00</div>
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+
+    <div class="cell time">11:00 - 12:00</div>
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+
+    <div class="cell time">1:00 - 2:00</div>
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+
+    <div class="cell time">2:00 - 3:00</div>
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+
+  </div>
+</div>
+
+  <script>
+  
+  window.onload= function () {
+    document.querySelectorAll(".cell").forEach((cell, i) => {
+      let saved = localStorage.getItem("cell_" + i);
+      if (saved) 
+      {
+        cell.innerHTML = saved;}
+    });
+  };
+
+  
+  document.querySelectorAll(".cell").forEach((cell, i) => {
+    cell.addEventListener("click", function () {
+      let v = cell.innerHTML;
+      let input = prompt("Enter subject or task:", v);
+
+      if (input !== null) {
+        cell.innerHTML = input;
+localStorage.setItem("cell_" + i, input);
+      }
+    });
+  });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Todo List</title>
+    <style>
+      body{
+        font-family:Arial;
+        background-color: aliceblue;
+         align-items: center;
+      }
+      .headstyle{
+        text-align: center;
+      }
+      .input-css,
+      .duedate-css, 
+      .time-css-i,
+      .time-css-j
+      {
+        align-items: center;
+        margin: 10px;
+       padding:10px;
+       border-radius: 50px;
+       
+      }
+      .columns-head,
+      .grid,
+      .columns{
+      display: grid;
+      grid-template-columns: 200px 150px 150px 150px 100px;
+      column-gap: 10px;
+      row-gap: 10px;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+  margin: 0 auto;
+      }
+      .delete{
+      background-color: darkred;
+      color: white;
+      border: none;
+      padding:6px ;
+      cursor:pointer;
+      margin: 10px;
+      }
+      .add{
+        background-color: green;
+      color: white;
+      border: none;
+      font-size: 15px;
+      padding:10px;
+      cursor: pointer;
+      }
+    </style>
+  </head>
+    <body>
+      <h1 class="headstyle">To-do List </h1>
+      <div class="columns-head">
+          <div>Task</div>
+          <div>Due Date</div>
+          <div>Start Time</div>
+          <div>Due Time</div>
+          <div>Action</div>
+        </div>
+      <div class="columns">
+      <input class="input input-css" placeholder="To do">
+      <input class="duedate duedate-css" type="date" placeholder="date">
+      <input class="time-i time-css-i" type="time" placeholder="Start by">
+      <input class="time-j time-css-j" type="time" placeholder="End by">
+      <button class="add" onclick="AddList()">Add</button>
+      </div>
+      
+    
+    <div class="js-todo grid"></div>
+    <script>
+    //  let todoList = [];
+      let todoList= JSON.parse(localStorage.getItem("todoList")) || [];
+
+  function saveTasks() {
+    localStorage.setItem("todoList", JSON.stringify(todoList));
+  }
+
+function AddList() {
+  const input = document.querySelector('.input');
+  const dateInput = document.querySelector('.duedate');
+  const timeinputi=document.querySelector('.time-i');
+  const timeinputj=document.querySelector('.time-j');
+
+  if (input.value === "") return;
+
+  todoList.push({
+    name: input.value,
+    date: dateInput.value,
+    starttime:timeinputi.value,
+    endtime:timeinputj.value
+  });
+
+  input.value = "";
+  dateInput.value = "";
+  timeinputi.value = "";
+  timeinputj.value = "";
+  saveTasks();
+  printList();
+}
+
+function printList() {
+  const container = document.querySelector('.js-todo');
+  container.innerHTML = "";
+
+  todoList.forEach((item, i) => {
+    container.innerHTML += `
+      <div>${item.name}</div>
+      <div>${item.date}</div>
+      <div>${item.starttime}</div>
+      <div>${item.endtime}</div>
+
+
+      <button class="delete" onclick="deleteItem(${i})">Delete</button>
+    `;
+  });
+}
+
+function deleteItem(i) {
+  todoList.splice(i, 1);
+  saveTasks();
+  printList();
+}
+printList(); 
+
+    </script>
+    </body>
+</html>

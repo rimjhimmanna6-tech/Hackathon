@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pomodoro Timer</title>
+    <style>
+      body{
+<<<<<<< HEAD
+        font-family:Arial, Helvetica, sans-serif;
+        background-color: black;
+      }
+      .divcss
+      .sbutton
+      .rbutton
+      {
+        border-radius: 50px;
+        margin: 10px;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+   <button class="sbutton" onclick="startTimer()">Start timer</button>
+   <button class="rbutton" onclick="resetTimer()">Reset timer</button>
+   <div class="time divcss"></div>
+    <script>
+let timeleft=25*60;
+let timer;
+let alarm=new Audio("audio/beep_alarm.mp3");
+=======
+        font-family: 'Times New Roman', Times, serif;
+        background-image: url(pom.png);
+        background-size:cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 0;
+        padding: auto;
+      }
+     .divcss, .sbutton, .rbutton {
+  border-radius: 50px;
+  margin: 50px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 30px;
+     }
+  .sbutton{
+    background-color: green;
+    color:white;
+    border: white;
+  }
+  .rbutton{
+    background-color: red;
+    color: white;
+    border: white;
+  }
+     .divcss{
+      font-size: large;
+      color:navy;
+     }
+ h1 {
+  font-family: "Comic Sans MS", cursive;
+  font-size: 50px;
+  color: red;
+  text-shadow: 0 0 6px black;
+  text-align: center;
+}
+
+.centre{
+  align-items: center;
+  text-align: center;
+}
+
+ 
+
+.time {
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 0 6px black;
+}
+
+
+
+    </style>
+  </head>
+  <body>
+    <h1>Pomodoro Timer</h1>
+    <div class="centre">
+   <div class="time divcss"></div>
+   <button class="sbutton" onclick="startTimer()">Start timer</button>
+   <button class="rbutton" onclick="resetTimer()">Reset timer</button>
+   
+    </div>
+    
+
+  <script>
+   let timeleft=25*60;
+   let timer;
+   let alarm=new Audio("beep_alarm.mp3");
+>>>>>>> 4cfcc65 (second)
+function displaytimer()
+{
+  let minutes=Math.floor(timeleft/60);
+  let seconds= timeleft % 60;
+ document.querySelector('.time').innerHTML=`Time left: ${minutes} : ${seconds}`;
+}
+<<<<<<< HEAD
+function starTimer()
+=======
+function startTimer()
+>>>>>>> 4cfcc65 (second)
+{
+if(timer)
+  return;
+timer=setInterval(()=>{
+  if(timeleft<=0)
+  {
+    clearInterval(timer);
+    timer=null;
+<<<<<<< HEAD
+=======
+    alarm.load();
+>>>>>>> 4cfcc65 (second)
+    alarm.play();
+    alert("TIME'S UP! GREAT JOB TIME TO TAKE BREAK");
+  }
+  else{
+    timeleft--;
+    displaytimer();
+}
+},1000
+);
+}
+function resetTimer()
+  {
+     clearInterval(timer);
+      timer=null;
+    timeleft=25*60;
+    displaytimer();
+  }
+<<<<<<< HEAD
+
+=======
+displaytimer();
+>>>>>>> 4cfcc65 (second)
+
+    </script>
+  </body>
+</html>
